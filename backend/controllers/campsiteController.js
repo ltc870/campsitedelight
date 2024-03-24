@@ -1,8 +1,33 @@
 const asyncHandler = require("express-async-handler");
 const Campsite = require("../model/campsiteModel");
+const express = require("express");
+const axios = require("axios");
+
+// const getCampsites = asyncHandler(async (req, res) => {
+//   const campsites = await Campsite.find({ user: req.user.id });
+//   res.status(200).json(campsites);
+// });
 
 const getCampsites = asyncHandler(async (req, res) => {
-  const campsites = await Campsite.find({ user: req.user.id });
+  const apiKey = process.env.API_KEY;
+  const baseUrl =
+    "https://developer.nps.gov/api/v1/campgrounds?api_key=" + api_key;
+
+  try {
+    const response = await axios.get(baseUrl, {
+      headers: {
+        Authorization: apiKey,
+      },
+    });
+    res.send(response.data);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .send("An error occurred while trying to fetch data from the NPS API.");
+  }
+
+  const campsites = response.data;
   res.status(200).json(campsites);
 });
 
@@ -21,7 +46,6 @@ const setCampsite = asyncHandler(async (req, res) => {
 });
 
 const User = require("../model/userModel");
-
 // const updateCampsite = asyncHandler(async (req, res) => {
 //   res.status(200).json({ message: `Updated campsite ${req.params.id}` });
 // });
