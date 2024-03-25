@@ -2,14 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Dashboard from "./components/Dashboard";
 // import Login from "./components/Login";
 // import Register from "./components/Register";
-import Access from "./components/Access";
+import Landing from "./components/Landing";
 
 function App() {
   return (
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<Access />} />
+          <Route path="/" element={<Landing />} />
         </Routes>
       </div>
     </Router>

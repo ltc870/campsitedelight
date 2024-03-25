@@ -1,6 +1,6 @@
 import React from "react";
 
-const Access = () => {
+const Landing = () => {
   return (
     <header className="header">
       <h1 className="header-title">Campsite Delight</h1>
@@ -12,4 +12,4 @@ const Access = () => {
   );
 };
 
-export default Access;
+export default Landing;
