@@ -51,6 +51,7 @@ const Register = () => {
   ) : (
     <div>
       <section>
+        <h1>Register</h1>
         <p>Please create an account</p>
       </section>
       <section>
